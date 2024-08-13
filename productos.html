@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Productos</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+            flex: 1;
+            text-align: left;
+        }
+        .cart-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centrar el carrito horizontalmente */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .cart-icon img {
+            width: 30px;
+            height: 30px;
+        }
+        .cart-icon #cart-count {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 0 8px;
+            margin-left: 5px;
+        }
+        .menu-btn {
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            margin-right: 20px;
+        }
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 1001;
+        }
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            margin-left: 50px;
+            color: white;
+            cursor: pointer;
+        }
+        .main-content {
+            margin-top: 80px; /* Adjust this according to your header height */
+            padding: 20px;
+        }
+        .product-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .product {
+            background-color: #f1f1f1;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 250px;
+        }
+        .product img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .product button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .product button:hover {
+            background-color: #218838;
+        }
+        .cart-section {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menú lateral -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
+        <a href="index.html">Inicio</a>
+        <a href="productos.html">Productos</a>
+        <a href="contactanos.html">Acerca De Nosotros</a>
+    </div>
+
+    <!-- Encabezado -->
+    <header>
+        <span class="menu-btn" onclick="openNav()">☰</span>
+        <h1>Galería de Productos</h1>
+        <div class="cart-icon">
+            <a href="#cart-section">
+                <img src="Imagenes/carro-de-la-compra.png" alt="Carrito de Compras">
+            </a>
+            <span id="cart-count">0</span>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="product-gallery">
+            <div class="product" data-name="STANLEY x STARBUCKS VERDE LIMA" data-price="850" data-description="STANLEY x STARBUCKS VERDE LIMA">
+                <img src="Imagenes/amarillo pollo.jpg" alt="STANLEY x STARBUCKS VERDE LIMA">
+                <h3>STANLEY x STARBUCKS VERDE LIMA</h3>
+                <p>$850</p>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" value="1" min="1">
+                <button onclick="addToCart(this)">Agregar al carrito</button>
+            </div>
+            <div class="product" data-name="Student halloween Glow in the dark" data-price="950" data-description="Student halloween Glow in the dark">
+                <img src="Imagenes/green .jpg" alt="Student halloween Glow in the dark">
+                <h3>Student Halloween Glow In The Dark</h3>
+                <p>$950</p>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" value="1" min="1">
+                <button onclick="addToCart(this)">Agregar al carrito</button>
+            </div>
+            <div class="product" data-name="STANLEY x STARBUCKS AZUL" data-price="800" data-description="STANLEY x STARBUCKS AZUL">
+                <img src="Imagenes/azulpapa.jpg" alt="STANLEY x STARBUCKS AZUL">
+                <h3>STANLEY x STARBUCKS AZUL</h3>
+                <p>$800</p>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" value="1" min="1">
+                <button onclick="addToCart(this)">Agregar al carrito</button>
+            </div>
+            <div class="product" data-name="Student azul cromo" data-price="950" data-description="Student azul cromo">
+                <img src="Imagenes/gris.jpg" alt="Student azul cromo">
+                <h3>STUDENT AZUL CROMO</h3>
+                <p>$950</p>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" value="1" min="1">
+                <button onclick="addToCart(this)">Agregar al carrito</button>
+            </div>
+            <div class="product" data-name="Reusable pumpkin 2024" data-price="500" data-description="Reusable pumpkin 2024">
+                <img src="Imagenes/pumpkin.jpg" alt="Reusable pumpkin 2024">
+                <h3>REUSABLE PUMPKIN 2024</h3>
+                <p>$500</p>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" value="1" min="1">
+                <button onclick="addToCart(this)">Agregar al carrito</button>
+            </div>
+            <div class="product" data-name="tumbler azul grid cielo" data-price="900" data-description="tumbler azul grid cielo">
+                <img src="Imagenes/termo tumbler azul grid cielo.jpg" alt="tumbler azul grid cielo">
+                <h3>TUMBLER AZUL GRID CIELO</h3>
+                <p>$900</p>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" value="1" min="1">
+                <button onclick="addToCart(this)">Agregar al carrito</button>
+            </div>
+            <div class="product" data-name="blue starbucks cup" data-price="950" data-description="blue starbucks cup">
+                <img src="Imagenes/blue starbuck cup.jpg" alt="blue starbucks cup">
+                <h3>BLUE STARBUCKS CUP</h3>
+                <p>$950</p>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" value="1" min="1">
+                <button onclick="addToCart(this)">Agregar al carrito</button>
+            </div>
+            <div class="product" data-name="Matte Black Studded Tumbler Cup" data-price="950" data-description="Matte Black Studded Tumbler Cup">
+                <img src="Imagenes/Matte Black Studded Tumbler Cup.jpg" alt="Matte Black Studded Tumbler Cup">
+                <h3>MATTE BLACK STUDDED TUMBLER CUP</h3>
+                <p>$950</p>
+                <label for="cantidad">Cantidad:</label>
+                <input type="number" id="cantidad" value="1" min="1">
+                <button onclick="addToCart(this)">Agregar al carrito</button>
+            </div>
+        </div>
+
+        <div id="cart-section" class="cart-section">
+            <h2>Carrito de Compras</h2>
+            <div id="cart-items"></div>
+            <h3>Total a Pagar: $<span id="total-price">0</span></h3>
+        </div>
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+
+        // Función para agregar productos al carrito
+        function addToCart(button) {
+            const productElement = button.parentElement;
+            const productName = productElement.getAttribute('data-name');
+            const productPrice = parseFloat(productElement.getAttribute('data-price'));
+            const quantity = parseInt(productElement.querySelector('input').value);
+
+            const cartItems = document.getElementById('cart-items');
+            const totalPriceElement = document.getElementById('total-price');
+            let totalPrice = parseFloat(totalPriceElement.innerText);
+
+            // Crear un nuevo elemento en el carrito
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+            cartItem.innerText = `${productName} x${quantity} - $${(productPrice * quantity).toFixed(2)}`;
+            cartItems.appendChild(cartItem);
+
+            // Actualizar el total del precio
+            totalPrice += productPrice * quantity;
+            totalPriceElement.innerText = totalPrice.toFixed(2);
+
+            // Actualizar la cantidad de artículos en el carrito
+            const cartCountElement = document.getElementById('cart-count');
+            let cartCount = parseInt(cartCountElement.innerText);
+            cartCount += quantity;
+            cartCountElement.innerText = cartCount;
+        }
+    </script>
+</body>
+</html>
